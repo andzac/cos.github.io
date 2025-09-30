@@ -7,7 +7,6 @@ const createListItems = (dataArray, listElement) => {
     });
 };
 document.addEventListener('DOMContentLoaded', () => {
-
     // Get the query string from the current URL
     const queryString = window.location.search;
     if (portfolioData) {
@@ -21,24 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const tasks = project.description[0].tasks;
         const job_req = project.description[0]["job requirements"];
 
+        const general_overview = project.description[0]["general_overview"];
+        document.getElementById('general_overview').textContent = general_overview;
+
         // Get the HTML elements where you want to insert the lists
         const tasksList = document.getElementById("tasks");
         const requirementsList = document.getElementById("job_requirements");
 
         document.getElementById("case-study-link").href = `${project.casestudy}`;
 
-
-
         // Call the function for both tasks and requirements
         createListItems(tasks, tasksList);
         createListItems(job_req, requirementsList);
-
-
-
-
     } else {
         console.error('Portfolio data or container not found!');
     }
-
-
 });
